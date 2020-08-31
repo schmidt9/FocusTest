@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabAddIns">
+        <group id="group3" label="Test">
+          <box id="box1">
+            <editBox id="editBox1"
+                     getText="GetText"
+                     onChange="EditBoxTextChange"
+                     sizeString="WWW" />
+            <editBox id="editBox2"
+                     getText="GetText"
+                     sizeString="WWW" />
+            <dropDown id="dropDown1"
+                      getImage="GetImage"
+                      getSelectedItemIndex="GetSelectedItemIndex"
+                      getItemCount="GetItemCount"
+                      getItemLabel="GetItemLabel"
+                      sizeString="WWW" />
+          </box>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+

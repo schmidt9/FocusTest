@@ -5,13 +5,27 @@ using System.Text;
 using System.Xml.Linq;
 using Visio = Microsoft.Office.Interop.Visio;
 using Office = Microsoft.Office.Core;
+using System.Diagnostics;
 
 namespace FosusTest
 {
     public partial class ThisAddIn
     {
+        private Ribbon1 ribbon;
+
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            Globals.ThisAddIn.Application.VisioIsIdle += Application_VisioIsIdle;
+        }
+
+        void Application_VisioIsIdle(Visio.Application app)
+        {
+            if (ribbon != null && ribbon.shouldInvalidate)
+            {
+                Debug.WriteLine("INVALIDATE");
+                ribbon.InvalidateControl("dropDown1");
+                ribbon.shouldInvalidate = false;
+            }
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
@@ -20,7 +34,8 @@ namespace FosusTest
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
-            return new Ribbon1();
+            ribbon = new Ribbon1();
+            return ribbon;
         }
 
         #region VSTO generated code

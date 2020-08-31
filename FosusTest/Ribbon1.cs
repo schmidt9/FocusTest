@@ -18,6 +18,7 @@ namespace FosusTest
 
         string[] data = { "1", "2", "3", "4", "5" };
         int selectedIndex;
+        public bool shouldInvalidate;
 
         public Ribbon1()
         {
@@ -59,10 +60,15 @@ namespace FosusTest
                 if (data[i] == text)
                 {
                     selectedIndex = i;
-                    ribbon.InvalidateControl("dropDown1");
+                    shouldInvalidate = true;
                     break;
                 }
             }
+        }
+
+        public void InvalidateControl(string controlId)
+        {
+            ribbon.InvalidateControl(controlId);
         }
 
         public int GetSelectedItemIndex(IRibbonControl control)

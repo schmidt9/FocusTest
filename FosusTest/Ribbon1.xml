@@ -13,7 +13,6 @@
                      getText="GetText"
                      sizeString="WWW" />
             <dropDown id="dropDown1"
-                      getImage="GetImage"
                       getSelectedItemIndex="GetSelectedItemIndex"
                       getItemCount="GetItemCount"
                       getItemLabel="GetItemLabel"
